@@ -69,7 +69,6 @@ def reply(message):
             elif message.chat.id == my_id:
                 dic = reader()
                 un = list(set(dic["channels"] + dic["users"]))
-                print(un)
                 for ch in un:
                     try:
                         bot.copy_message(chat_id=ch, from_chat_id=message.chat.id, message_id=message.id)
@@ -90,8 +89,6 @@ def reply(message):
                         exceptionf(arg, user=ch, dic=dic)
                 bot.reply_to(message, "تم إرسال الرسالة إلى كل القنوات المضاف البوت لها")
 
-                # if message.caption:
-                #     print(message.caption)
     except Exception as arg:
         exceptionf(arg)
 
