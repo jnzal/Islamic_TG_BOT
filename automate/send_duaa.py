@@ -9,14 +9,18 @@ from essential.constants import *
 
 def send_duaa():
     # next message timer
-    threading.Timer(duaa_repeater*h, send_duaa).start()
+    t_duaa = threading.Timer(duaa_repeater*h, send_duaa)
+    t_duaa.name = "duaa timer"
+    t_duaa.start()
     # -----
+    
     dic = reader()
     sent = []
     un = list(set(dic["duaa_list"]))# + dic["all"]))
     for user in un:
         if f"{user}" not in dic["duaac"].keys():
             dic["duaac"][f"{user}"] = 0
+            writer(dic)
         try:
             dic = reader()
             c = dic["duaac"][f"{user}"]

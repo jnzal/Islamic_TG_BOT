@@ -20,6 +20,7 @@ def send_hesn():
     for user in un:
         if f"{user}" not in dic["hesnc"].keys():
             dic["hesnc"][f"{user}"] = 1
+            writer(dic)
         try:
             dic = reader()
             c = dic["hesnc"][f"{user}"]
